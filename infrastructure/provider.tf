@@ -1,10 +1,10 @@
 terraform {
   backend "azurerm" {
-    container_name       = "<storageAccountContainerName>"
+    container_name       = "tfstate"
     key                  = "terraform.tfstate"
-    resource_group_name  = "<storageAccountResourceGroupName>"
-    subscription_id      = "<storageAccountSubscriptionId>"
-    storage_account_name = "<sotrageAccountName>"
+    resource_group_name  = "rg-terraform-prod-uks"
+    subscription_id      = "de592fa3-d646-4e2d-b745-69da97e8af27"
+    storage_account_name = "tfstateproduks32jn2n"
   }
 
   required_providers {
