@@ -1,3 +1,9 @@
+variable "location_pri" {
+  default     = "UK South"
+  description = "The orimary Azure region into which resources will be deployed"
+  type        = string
+}
+
 variable "tf_provider_client_id" {
   default     = null # Sourced from ARM_CLIENT_ID by default
   description = "The service principal client ID used by Terraform to connect to Azure"
