@@ -5,7 +5,7 @@ variable "location_pri" {
 }
 
 variable "location_sec" {
-  default     = "UK South"
+  default     = "West Europe"
   description = "The secondary Azure region into which resources will be deployed"
   type        = string
 }
