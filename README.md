@@ -1,6 +1,6 @@
-# Template - Azure Terraform
+# Rutland Lions Azure Infrastructure
 
-This repo acts as a template for Azure infrastructure deployments using Terraform and GitHub Actions. It is intended for use as a quick-start foundation for getting up and running with DevOps-style deployments, allowing the user to simply write the Terraform code related to their required infrastructure, without the need to also set up the repository structure, pipelines, and other tooling necessary for automated linting, quality, and security checks.
+This repo contains the Terraform codebase describing the Rutland Lions Azure infrastructure. This repository acts as the soruce of truth for Azure infrastructure, and any changes to that infrastructure should follow the a GitOps process of checking out a new branch, making any necessary changes, then raising a pull request for approval prior to merging into the main branch. Continuous integration and continuous delivery pipelines have been configured to run automated code validation and security checks on pushes to any branch, and automated deployments to the devleopment environment on successful merge to main. This process is described in more detail below.
 
 ## Repo Structure
 
@@ -13,25 +13,14 @@ This repo acts as a template for Azure infrastructure deployments using Terrafor
 +-- infrastructure
 |	+-- .tflint.hcl
 |	+-- modules
-|	|	+-- example-service-a
-|	|	|	+-- app-service.tf
-|	|	|	+-- ...
-|	|	|	+-- resource-group.tf
-|	|	|	+-- local.tf
-|	|	|	+-- outputs.tf
-|	|	|	+-- variables.tf
-|	|	+-- example-service-b
-|	|		+-- kubernetes-service.tf
-|	|		+-- ...
-|	|		+-- resource-group.tf
-|	|		+-- local.tf
-|	|		+-- outputs.tf
-|	|		+-- variables.tf
-|	+-- deploy.tf
-|	+-- ...
+|	|	+-- kc-common-vnet
+|	|	+-- kc-vnet-to-vnet-peering
+|	|	+-- kc-two-tier-vm-app
+| +-- resource-groups.tf
 |	+-- locals.tf
 |	+-- provider.tf
 |	+-- variables.tf
+| +-- workload.tf
 +-- .gitignore
 +-- .pre-commit-config.yaml
 +-- README.md
