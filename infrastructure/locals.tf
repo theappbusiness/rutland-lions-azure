@@ -21,6 +21,7 @@ locals {
   }
 
   resource_suffix_pri = "${local.workload_short}-${terraform.workspace}-${module.azure_region_pri.location_short}"
+  resource_suffix_sec = "${local.workload_short}-${terraform.workspace}-${module.azure_region_sec.location_short}"
 
   tags = {
     CreatedBy   = "terraform"
