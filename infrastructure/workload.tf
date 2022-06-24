@@ -41,3 +41,17 @@ module "care_sec_common" {
     }
   ]
 }
+
+module "care_peerings" {
+  source = "./modules/kc-vnet-to-vnet-peering"
+
+  environment             = terraform.workspace
+  location_pri            = module.azure_region_pri.location_short
+  location_sec            = module.azure_region_sec.location_short
+  resource_group_name_pri = azurerm_resource_group.care_pri.name
+  resource_group_name_sec = azurerm_resource_group.care_sec.name
+  vnet_id_pri             = module.care_pri_common.vnet_id
+  vnet_id_sec             = module.care_sec_common.vnet_id
+  vnet_name_pri           = module.care_pri_common.vnet_name
+  vnet_name_sec           = module.care_sec_common.vnet_name
+}
