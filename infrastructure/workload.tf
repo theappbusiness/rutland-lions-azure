@@ -55,3 +55,33 @@ module "care_peerings" {
   vnet_name_pri           = module.care_pri_common.vnet_name
   vnet_name_sec           = module.care_sec_common.vnet_name
 }
+
+module "care_pri_compute" {
+  source = "./modules/kc-two-tier-vm-app"
+
+  computer_name_prefix_web = "careweb"
+  environment              = terraform.workspace
+  location                 = module.azure_region_pri.location_cli
+  resource_group_name      = azurerm_resource_group.care_pri.name
+  resource_suffix          = local.resource_suffix_pri
+  tags                     = local.tags
+
+  vnet_subnets = module.care_pri_common.vnet_subnets
+  vm_size_data = local.care_environments[terraform.workspace].vm_size_data
+  vm_size_web  = local.care_environments[terraform.workspace].vm_size_web
+}
+
+module "care_sec_compute" {
+  source = "./modules/kc-two-tier-vm-app"
+
+  computer_name_prefix_web = "careweb"
+  environment              = terraform.workspace
+  location                 = module.azure_region_sec.location_cli
+  resource_group_name      = azurerm_resource_group.care_sec.name
+  resource_suffix          = local.resource_suffix_sec
+  tags                     = local.tags
+
+  vnet_subnets = module.care_sec_common.vnet_subnets
+  vm_size_data = local.care_environments[terraform.workspace].vm_size_data
+  vm_size_web  = local.care_environments[terraform.workspace].vm_size_web
+}
