@@ -37,6 +37,10 @@ variable "vnet_subnets" {
     {
       name     = "T1Subnet"
       new_bits = 1
+    },
+    {
+      name     = "T2Subnet"
+      new_bits = 2
     }
   ]
   description = "A collection of subnet definitions used to logically partition the Virtual Network"
