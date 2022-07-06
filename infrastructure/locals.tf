@@ -3,8 +3,8 @@ locals {
     dev = {
       vnet_base_cidr_block_pri = "10.70.0.0/24"
       vnet_base_cidr_block_sec = "10.170.0.0/24"
-      vm_size_data             = "Standard_B2s"
-      vm_size_web              = "Standard_B2s"
+      vm_size_data             = "Standard_E2_v4"
+      vm_size_web              = "Standard_D2_v4"
     }
     test = {
       vnet_base_cidr_block_pri = "10.80.0.0/24"
